@@ -17,3 +17,8 @@ const size = {
     desktop: `(min-width: ${size.desktop})`,
     desktopL: `(min-width: ${size.desktop})`
   };
+export const variables = {
+  grayColor: "#808080",
+  fontParagraph:"18px",
+
+}

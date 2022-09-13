@@ -5,6 +5,10 @@ import {
   SInput,
   SLabel,
   TextArea,
+  ScheckBox,
+  SLabelCheckBox,
+  SCheckboxContainer,
+  SButton
 } from "./styles";
 const Form = () => {
   return (
@@ -47,6 +51,20 @@ const Form = () => {
           name="yourMessage"
           placeholder="Twoja wiadomość *"
         ></TextArea>
+        <SCheckboxContainer>
+          <ScheckBox type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+
+          <SLabelCheckBox htmlFor="checkboxPermission">
+            {" "}
+            Wyrażam zgodę na otrzymywanie informacji, w tym informacji handlowej
+            przesyłanej na podany przeze mnie adres e-mail, a także na używanie
+            telekomukacyjnych urządzeń końcowych dla celów marketingu
+            bezpośredniego Vee Care Sp. zoo. Wyrażenie ww. zgód jest dobrowolne.
+            Zostałem/am także poinformowany/a, że udzielone przeze mnie zgody
+            mogą być odwołane w każdym czasie.
+          </SLabelCheckBox>
+        </SCheckboxContainer>
+        <SButton>Wyślij wiadomość</SButton>
       </SForm>
     </MainContainer>
   );

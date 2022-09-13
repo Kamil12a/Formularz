@@ -21,7 +21,6 @@ export const SForm = styled.div`
   padding-top: 20px;
   padding-bottom: 20px;
   @media ${device.mobileL} {
-    /* border: none; */
     padding-top: 10px;
     padding-bottom: 10px;
   }
@@ -29,9 +28,6 @@ export const SForm = styled.div`
 export const WelcomeText = styled.h2`
   font-size: ${variables.fontBg};
   text-align: center;
-  @media ${device.mobileL} {
-    font-size: ${variables.fontBg} ;
-  }
 `;
 
 export const SLabel = styled.label`
@@ -101,6 +97,7 @@ export const SButton = styled.button`
   height: 70px;
   font-size: 16px;
   font-weight: 600;
+  cursor: pointer;
   @media ${device.laptop} {
     height: 60px;
   }

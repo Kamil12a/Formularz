@@ -8,15 +8,25 @@ import {
   ScheckBox,
   SLabelCheckBox,
   SCheckboxContainer,
-  SButton
+  SButton,
 } from "./styles";
+import { useState } from "react";
 const Form = () => {
+  const [inputDatas, setInputDatas] = useState({});
+  const repond_To_Changes_In_Form = (e) => {
+    let name = e.target.name;
+    let inputValue =
+      name === "checkboxPermission" ? e.target.checked : e.target.value;
+    setInputDatas((data) => ({ ...data, [name]: inputValue }));
+    console.log(inputDatas);
+  };
   return (
     <MainContainer>
       <SForm>
         <WelcomeText>Napisz do nas</WelcomeText>
         <SLabel htmlFor="name">imię i nazwisko</SLabel>
         <SInput
+          onChange={repond_To_Changes_In_Form}
           type="text"
           id="name"
           name="name"
@@ -24,6 +34,7 @@ const Form = () => {
         />
         <SLabel htmlFor="e-mail">Adres e-mail</SLabel>
         <SInput
+          onChange={repond_To_Changes_In_Form}
           type="e-mail"
           id="e-mail"
           name="e-mail"
@@ -31,6 +42,7 @@ const Form = () => {
         />
         <SLabel htmlFor="phone">+48 Numer telefonu</SLabel>
         <SInput
+          onChange={repond_To_Changes_In_Form}
           type="phone"
           id="phone"
           name="phone"
@@ -39,6 +51,7 @@ const Form = () => {
         <SLabel htmlFor="company">Twoja nazwa firmy</SLabel>
 
         <SInput
+          onChange={repond_To_Changes_In_Form}
           type="text"
           id="company"
           name="company"
@@ -50,10 +63,15 @@ const Form = () => {
           id="yourMessage"
           name="yourMessage"
           placeholder="Twoja wiadomość *"
+          onChange={repond_To_Changes_In_Form}
         ></TextArea>
         <SCheckboxContainer>
-          <ScheckBox type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-
+          <ScheckBox
+            type="checkbox"
+            id="checkboxPermission"
+            name="checkboxPermission"
+            onChange={repond_To_Changes_In_Form}
+          />
           <SLabelCheckBox htmlFor="checkboxPermission">
             {" "}
             Wyrażam zgodę na otrzymywanie informacji, w tym informacji handlowej
@@ -64,7 +82,7 @@ const Form = () => {
             mogą być odwołane w każdym czasie.
           </SLabelCheckBox>
         </SCheckboxContainer>
-        <SButton>Wyślij wiadomość</SButton>
+        <SButton type="submit">Wyślij wiadomość</SButton>
       </SForm>
     </MainContainer>
   );

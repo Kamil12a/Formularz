@@ -22,5 +22,6 @@ export const variables = {
   fontMd: "18px",
   fontMdMobile:"16px",
   fontBg: "24px",
-  fontSm:"11px"
+  fontSm:"11px",
+  fontSmErrorInfo:"10px"
 };

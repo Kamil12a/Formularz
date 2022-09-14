@@ -27,17 +27,24 @@ export const SForm = styled.div`
 `;
 export const WelcomeText = styled.h2`
   font-size: ${variables.fontBg};
-  text-align: center;
 `;
-
+export const InputSection = styled.div`
+  width: 80%;
+  @media ${device.laptopL} {
+    width: 90%;
+  }
+`;
+export const InputContainer = styled.div`
+  text-align: center;
+  margin-top: 20px;
+`;
 export const SLabel = styled.label`
   visibility: hidden;
 `;
 const baseInputStyles = css`
-  width: 80%;
+  width: 100%;
   height: 60px;
   padding: 10px;
-  margin-bottom: 10px;
   font-size: ${variables.fontMd};
   background-color: white;
   border: 1px solid ${variables.grayColor};
@@ -45,7 +52,6 @@ const baseInputStyles = css`
   border-radius: 5px;
   outline: none;
   @media ${device.laptop} {
-    width: 90%;
     padding: 5px;
     height: 50px;
     font-size: ${variables.fontMdMobile};
@@ -53,7 +59,7 @@ const baseInputStyles = css`
   }
 `;
 export const SInput = styled.input`
-  ${baseInputStyles}
+  ${baseInputStyles};
 `;
 
 export const TextArea = styled.textarea`
@@ -101,4 +107,8 @@ export const SButton = styled.button`
   @media ${device.laptop} {
     height: 60px;
   }
+`;
+
+export const ErrorMessage = styled.span`
+  padding: 3px;
 `;

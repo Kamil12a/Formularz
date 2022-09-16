@@ -2,34 +2,32 @@ import {
   MainContainer,
   SForm,
   WelcomeText,
-  SInput,
   SLabel,
   TextArea,
   ScheckBox,
   SLabelCheckBox,
   SCheckboxContainer,
-  SButton,
-  InputContainer,
-  ErrorMessage,
-  InputSection,
 } from "./styles";
 import { inputs } from "./inputs";
 import { useState } from "react";
 import { changeFormStateValues } from "./changeFormStateValues";
 import FormInput from "./FormInput";
+import ButtonToSendForm from "./ButtonToSendForm";
 const Form = () => {
-  const [inputDatas, setInputDatas] = useState({});
+  const [inputDatas, setInputDatas] = useState({
+    name: "",
+    yourMessage: "",
+    email: "",
+    tel: "",
+    company: "",
+    checked: "false",
+  });
   const repond_To_Changes_In_Form = (e) => {
     changeFormStateValues(e, setInputDatas);
-    console.log(inputDatas);
   };
-  const sendForm = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <MainContainer>
-      <SForm onSubmit={sendForm}>
+      <SForm>
         <WelcomeText>Napisz do nas</WelcomeText>
         {inputs.map((input) => {
           return (
@@ -45,14 +43,15 @@ const Form = () => {
           id="yourMessage"
           name="yourMessage"
           placeholder="Twoja wiadomość*"
-          onChange={repond_To_Changes_In_Form}
+          onBlur={repond_To_Changes_In_Form}
+          minLength="1"
+          maxLength="100"
         ></TextArea>
         <SCheckboxContainer>
           <ScheckBox
             type="checkbox"
             id="checkboxPermission"
             name="checkboxPermission"
-            onChange={repond_To_Changes_In_Form}
           />{" "}
           <SLabelCheckBox htmlFor="checkboxPermission">
             {" "}
@@ -64,7 +63,7 @@ const Form = () => {
             mogą być odwołane w każdym czasie.
           </SLabelCheckBox>
         </SCheckboxContainer>
-        <SButton type="submit">Wyślij wiadomość</SButton>
+        <ButtonToSendForm inputDatas={inputDatas} />
       </SForm>
     </MainContainer>
   );

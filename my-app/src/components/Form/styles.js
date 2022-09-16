@@ -63,7 +63,8 @@ export const SInput = styled.input`
 `;
 
 export const TextArea = styled.textarea`
-  ${baseInputStyles}
+
+  ${baseInputStyles};
   max-width: 80%;
   min-width: 80%;
   min-height: 6em;
@@ -110,5 +111,6 @@ export const SButton = styled.button`
 `;
 
 export const ErrorMessage = styled.span`
+display: none;
   padding: 3px;
 `;

@@ -6,9 +6,9 @@ export const inputs = [
     placeholder: "Imię i nazwisko",
     id: "name",
     errorMessage: "Proszę wpisać imię i nazwisko.",
-    required:true,
-    pattern:"[A-Za-z]{3}",
-    focused:"false"
+    required: true,
+    pattern: "^[a-zA-Z0-9_ ]*$",
+    focused: "false",
   },
   {
     type: "email",
@@ -17,17 +17,17 @@ export const inputs = [
     id: "email",
     placeholder: "Adres e-mail *",
     errorMessage: "Proszę wpisać adres e-mail.",
-    required:true
+    required: true,
   },
   {
     type: "tel",
     id: "tel",
     name: "tel",
     id: "tel",
-    pattern:"[0-9]{3}-[0-9]{3}-[0-9]{4}",
+    pattern:"[+]{1}[0-9]{2} [0-9]{9}",
     placeholder: "+48 Numer telefonu",
-    errorMessage: "Proszę wpisać numer telefonu.",
-    required:true
+    errorMessage: "Proszę wpisać poprawny numer telefonu. (+xx xxxxxxxxx)",
+    required: true,
   },
   {
     name: "company",
@@ -36,6 +36,7 @@ export const inputs = [
     label: "company",
     id: "company",
     errorMessage: "Proszę wpisać nazwę firmy.",
-    required:true
+    required: true,
+    pattern: "^[a-zA-Z0-9_ ]*$",
   },
 ];

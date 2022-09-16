@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   SInput,
   SLabel,
@@ -8,13 +7,12 @@ import {
 } from "./styles";
 import { useRef } from "react";
 const FormInput = ({ input, repond_To_Changes_In_Form }) => {
-  const [focused, setFocused] = useState(false);
-  const textInput = useRef(null);
+  const errorInput = useRef(null);
   const handleFocus = (e) => {
     if (e.target.checkValidity()) {
-      textInput.current.style.display = "none";
+      errorInput.current.style.display = "none";
     } else {
-      textInput.current.style.display = "block";
+      errorInput.current.style.display = "block";
     }
   };
   return (
@@ -26,7 +24,7 @@ const FormInput = ({ input, repond_To_Changes_In_Form }) => {
           onBlur={repond_To_Changes_In_Form}
           {...input}
         ></SInput>
-        <ErrorMessage ref={textInput}>{input.errorMessage}</ErrorMessage>
+        <ErrorMessage ref={errorInput}>{input.errorMessage}</ErrorMessage>
       </InputContainer>
     </InputSection>
   );

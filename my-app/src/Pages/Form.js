@@ -7,12 +7,12 @@ import {
   ScheckBox,
   SLabelCheckBox,
   SCheckboxContainer,
-} from "./styles";
-import { inputs } from "./inputs";
+} from "../components/Form/styles";
+import { inputs } from "../components/Form/inputs";
 import { useState } from "react";
-import { changeFormStateValues } from "./changeFormStateValues";
-import FormInput from "./FormInput";
-import ButtonToSendForm from "./ButtonToSendForm";
+import { changeFormStateValues } from "../components/Form/changeFormStateValues";
+import FormInput from "../components/Form/FormInput";
+import ButtonToSendForm from "../components/Form/ButtonToSendForm";
 const Form = () => {
   const [inputDatas, setInputDatas] = useState({
     name: "",

@@ -30,7 +30,7 @@ export const WelcomeText = styled.h2`
 `;
 export const InputSection = styled.div`
   width: 80%;
-  @media ${device.laptopL} {
+  @media ${device.laptop} {
     width: 90%;
   }
 `;

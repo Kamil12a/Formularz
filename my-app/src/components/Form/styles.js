@@ -9,14 +9,12 @@ export const MainContainer = styled.div`
   height: 100vh;
   background-color: black;
 `;
-export const SForm = styled.div`
-  background: white;
+export const SForm = styled.form`
+  background: ${props => props.theme.main};
   width: 60vh;
   display: flex;
   align-items: center;
   flex-direction: column;
-  border: 2 px solid black;
-  background-color: #f9f9f9;
   border: 5px solid black;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -111,6 +109,5 @@ export const SButton = styled.button`
 `;
 
 export const ErrorMessage = styled.span`
-display: none;
   padding: 3px;
 `;

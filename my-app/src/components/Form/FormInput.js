@@ -5,27 +5,19 @@ import {
   ErrorMessage,
   InputSection,
 } from "./styles";
-import { useRef } from "react";
-const FormInput = ({ input, repond_To_Changes_In_Form }) => {
-  
-  const errorInput = useRef(null);
-  const handleFocus = (e) => {
-    if (e.target.checkValidity()) {
-      errorInput.current.style.display = "none";
-    } else {
-      errorInput.current.style.display = "block";
-    }
+import { validation } from "./validation";
+
+const FormInput = ({ input, error, setErrors }) => {
+  const checkValidation = (e) => {
+    let input = e.target;
+    validation(input, setErrors);
   };
   return (
     <InputSection>
       <InputContainer>
         <SLabel htmlFor={input.name}></SLabel>
-        <SInput
-          onChange={handleFocus}
-          onBlur={repond_To_Changes_In_Form}
-          {...input}
-        ></SInput>
-        <ErrorMessage ref={errorInput}>{input.errorMessage}</ErrorMessage>
+        <SInput onChange={checkValidation} {...input} required={false}></SInput>
+        {error && <ErrorMessage>{input.errorMessage}</ErrorMessage>}
       </InputContainer>
     </InputSection>
   );

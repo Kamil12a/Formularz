@@ -1,9 +1,15 @@
-import Form from "./Pages/Form"
+import { ThemeProvider } from "styled-components";
+import Form from "./components/Form/Form";
 function App() {
-
-  return <>
-    <Form></Form>
-  </>;
+  const theme = {
+    main: "white"
+  };
+  return (
+    <ThemeProvider theme={theme}>
+      <Form />
+    </ThemeProvider>
+  );
 }
 
 export default App;
+

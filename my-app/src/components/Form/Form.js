@@ -7,34 +7,38 @@ import {
   ScheckBox,
   SLabelCheckBox,
   SCheckboxContainer,
-} from "../components/Form/styles";
-import { inputs } from "../components/Form/inputs";
+  SButton,
+} from "./styles";
+import { inputs } from "./inputs";
 import { useState } from "react";
-import { changeFormStateValues } from "../components/Form/changeFormStateValues";
-import FormInput from "../components/Form/FormInput";
-import ButtonToSendForm from "../components/Form/ButtonToSendForm";
+import FormInput from "./FormInput";
+import { validation } from "./validation";
 const Form = () => {
-  const [inputDatas, setInputDatas] = useState({
-    name: "",
-    yourMessage: "",
-    email: "",
-    tel: "",
-    company: "",
-    checked: "false",
+  const [errors, setErrors] = useState({
+    name: false,
+    email: false,
+    tel: false,
+    company: false,
   });
-  const repond_To_Changes_In_Form = (e) => {
-    changeFormStateValues(e, setInputDatas);
+  const sendForm = (e) => {
+    e.preventDefault();
+    inputs.forEach((i) => {
+      let element = e.target[i.name];
+      validation(element, setErrors);
+    });
   };
+
   return (
     <MainContainer>
-      <SForm>
+      <SForm onSubmit={sendForm}>
         <WelcomeText>Napisz do nas</WelcomeText>
         {inputs.map((input) => {
           return (
             <FormInput
+              setErrors={setErrors}
+              error={errors[input.name]}
               key={input.id}
               input={input}
-              repond_To_Changes_In_Form={repond_To_Changes_In_Form}
             />
           );
         })}
@@ -43,7 +47,6 @@ const Form = () => {
           id="yourMessage"
           name="yourMessage"
           placeholder="Twoja wiadomość*"
-          onBlur={repond_To_Changes_In_Form}
           minLength="1"
           maxLength="100"
         ></TextArea>
@@ -63,10 +66,29 @@ const Form = () => {
             mogą być odwołane w każdym czasie.
           </SLabelCheckBox>
         </SCheckboxContainer>
-        <ButtonToSendForm inputDatas={inputDatas} />
+        <SButton>Wyślij wiadomość</SButton>
       </SForm>
     </MainContainer>
   );
 };
 
 export default Form;
+
+// fetch("http://backend.form.vee.ai/send_form/", {
+//   method: "POST",
+//   headers: {
+//     "Content-Type": "application/json",
+//     "x-api-key": "pwoeirslkdfj4783woiery2lk3j4",
+//   },
+//   body: JSON.stringify({
+//     name: "str",
+//     e_mail: "str.@wp.pl",
+//     phone_number: "+00000000000",
+//     company_name: "str",
+//     message: "str",
+//   }),
+// })
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//   });

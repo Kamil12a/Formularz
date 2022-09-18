@@ -7,7 +7,6 @@ export const inputs = [
     id: "name",
     errorMessage: "Proszę wpisać imię i nazwisko.",
     // pattern: "^[a-zA-Z0-9_ ]*$",
-
   },
   {
     type: "email",
@@ -24,7 +23,7 @@ export const inputs = [
     id: "tel",
     pattern: "[+]{1}[0-9]{2} [0-9]{9}",
     placeholder: "+48 Numer telefonu",
-    errorMessage: "Proszę wpisać poprawny numer telefonu. (+xx xxxxxxxxx)",
+    errorMessage: "Proszę wpisać numer telefonu. (+xx xxxxxxxxx)",
   },
   {
     name: "company",

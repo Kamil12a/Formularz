@@ -4,6 +4,7 @@ import {
   InputContainer,
   ErrorMessage,
   InputSection,
+  SErrorContainer,
 } from "./styles";
 import { validation } from "./validation";
 
@@ -17,7 +18,9 @@ const FormInput = ({ input, error, setErrors }) => {
       <InputContainer>
         <SLabel htmlFor={input.name}></SLabel>
         <SInput onChange={checkValidation} {...input} required={false}></SInput>
-        {error && <ErrorMessage>{input.errorMessage}</ErrorMessage>}
+        <SErrorContainer>
+          {error && <ErrorMessage>{input.errorMessage}</ErrorMessage>}
+        </SErrorContainer>
       </InputContainer>
     </InputSection>
   );
